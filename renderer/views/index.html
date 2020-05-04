@@ -1,0 +1,137 @@
+<html>
+  <header>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="../../node_modules/toastr/build/toastr.css">
+    
+    <!-- <link rel="stylesheet" href="../../node_modules/photonkit/dist/css/photon.css"> -->
+  </header>
+  <body>
+  	<div class="container">
+<br/>
+		<ul class="nav nav-tabs nav-fill" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" href="#manageProjectsTab" role="tab" data-toggle="tab"> <i class="fas fa-project-diagram"></i> Manage Projects</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#manageKeysTab" role="tab" data-toggle="tab"><i class="fas fa-key"></i> Manage SSH Keys</a>
+		  </li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div role="tabpanel" class="tab-pane fade in active show" id="manageProjectsTab">
+		  	<h2>Projects</h2>
+		  	<div class="row">
+		  			<div class="col-12">
+		  				<button id='addProject' class='btn btn-primary float-right'> <i class="fas fa-plus"></i> Add Project</button>
+		  			</div>
+		  	</div>
+		  	<div class="row mt-2">
+		  		<div class="col-12">
+						<table class="table">
+					    <thead>
+					      <tr>
+					        <th>#</th>
+					        <th>Name</th>
+					        <th>Path</th>
+					        <th>User</th>
+					        <th>SSH Key</th>
+					        <th>Actions</th>
+					      </tr>
+					    </thead>
+					    <tbody id='projectListing'>
+					      <tr>
+					        <td colspan="4">No Projects Found</td>
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>	
+
+		  </div>
+		  <div role="tabpanel" class="tab-pane fade" id="manageKeysTab">
+		  	
+		  	<h2>SSH Keys</h2>
+		  	<div class="row">
+		  		<div class="col-12">
+		  			<button type="button" id='addSSHKey' class="btn btn-primary float-right" data-toggle="modal" data-target="#addSshKeyModal"> <i class="fas fa-plus"></i> Add SSH Key</button>
+		  			<button style="margin-right:20px" type="button" id='addSSHKey' class="btn btn-info float-right" onclick="selectTargetForKey()"> <i class="fas fa-folder-plus"></i> Generate SSH Key</button>
+		  		</div>
+		  	</div>
+		  	<div class="row mt-2">
+		  		<div class="col-12">
+				    <table class="table">
+					    <thead>
+					      <tr>
+					        <th>#</th>
+					        <th>Name</th>
+					        <th>Description</th>
+					        <th>Path</th>
+					        <th>Actions</th>
+					      </tr>
+					    </thead>
+					    <tbody id='keysListing'>
+					      <tr>		
+					        <td colspan="4">No Keys Found</td>		
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+				</div>
+		  </div>
+		</div>
+
+		<hr/>
+			<div class="row">
+				<div class="col-6 text-right">
+					<button id='reloadProjects' class='btn btn-primary'> <i class="fas fa-sync"></i> Reload Projects</button>
+				</div>
+				<div class="col-6 text-left">
+					<button id='generateConfig' class='btn btn-success'> <i class="fas fa-save"></i> Generate Config</button>
+				</div>
+			</div>
+			
+			
+
+
+  	<div class="modal fade" id="addSshKeyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Add SHH Key</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <form>
+		          <div class="form-group">
+		            <label for="recipient-name" class="col-form-label">Name</label>
+		            <input type="text" class="form-control" id="keyName">
+		          </div>
+		          <div class="form-group">
+		            <label for="message-text" class="col-form-label">Description:</label>
+		            <textarea class="form-control" id="keyDescription"></textarea>
+		          </div>
+		            <div class="form-group">
+		            <label for="message-text" class="col-form-label">Select private key file:</label>
+		            <input class="form-control" type='file' id="keyFile"></input>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" id='saveKey'>Save Key</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+</div>
+      
+    <script>require('../js/index.js');</script>
+    <script>require('popper.js');</script>
+		<script>require('bootstrap');</script>
+  </body>
+</html>
