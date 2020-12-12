@@ -33,7 +33,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "bootstrap": "^4.4.1",
-    "ini": "^1.3.5",
+    "ini": "^1.3.6",
     "jquery": "^3.5.1",
     "knex": "^0.20.15",
     "parse-git-config": "^3.0.0",
